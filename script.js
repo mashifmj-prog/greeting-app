@@ -26,7 +26,7 @@ function updateGreeting() {
   }
 
   document.getElementById("icon").innerText = icon;
-  document.getElementById("text").innerText = greeting;;
+  document.getElementById("text").innerText = greeting; // removed the name
 }
 
 function updateClock() {
@@ -44,4 +44,3 @@ setInterval(() => {
   updateClock();
   updateGreeting(); // ensures greeting updates automatically at the right hour
 }, 1000);
-
