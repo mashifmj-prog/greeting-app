@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  transition: background 2s ease; /* Increased duration for smooth transition */
+  transition: background 2s ease; /* Background now transitions smoothly over 2 seconds */
 }
 
 .container {
@@ -78,7 +78,6 @@ h1 {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-/* Backgrounds for different times */
 .morning {
   background: linear-gradient(to bottom right, #fceabb, #f8b500);
 }
@@ -99,7 +98,6 @@ h1 {
   background: linear-gradient(to bottom right, #2c3e50, #4ca1af);
 }
 
-/* Responsive adjustments */
 @media (max-width: 500px) {
   h1 {
     font-size: 2rem;
