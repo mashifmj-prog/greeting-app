@@ -6,11 +6,15 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  transition: background 1s ease; /* smooth background changes */
+  transition: background 2s ease; /* Increased duration for smooth transition */
 }
 
 .container {
   text-align: center;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  margin: auto;
 }
 
 h1 {
@@ -20,19 +24,51 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px; /* space between icon and text */
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#icon, #text {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 #icon {
-  font-size: 3.2rem; /* slightly bigger than text */
+  font-size: 3.2rem;
+}
+
+#nameInput {
+  margin-top: 12px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+#nameInput:focus {
+  transform: scale(1.05);
 }
 
 #verse {
   font-size: 1.2rem;
   color: white;
-  margin-top: 8px;
+  margin-top: 12px;
   font-style: italic;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  line-height: 1.5;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #clock {
@@ -44,21 +80,34 @@ h1 {
 
 /* Backgrounds for different times */
 .morning {
-  background: linear-gradient(to bottom right, #fceabb, #f8b500); /* sunrise */
+  background: linear-gradient(to bottom right, #fceabb, #f8b500);
 }
 
 .day {
-  background: linear-gradient(to bottom right, #4facfe, #00f2fe); /* blue sky */
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe);
 }
 
 .afternoon {
-  background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee); /* soft pink-blue */
+  background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee);
 }
 
 .evening {
-  background: linear-gradient(to bottom right, #fda085, #f6d365); /* sunset */
+  background: linear-gradient(to bottom right, #fda085, #f6d365);
 }
 
 .night {
-  background: linear-gradient(to bottom right, #2c3e50, #4ca1af); /* night sky */
+  background: linear-gradient(to bottom right, #2c3e50, #4ca1af);
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2rem;
+  }
+  #icon {
+    font-size: 2.2rem;
+  }
+  #verse {
+    font-size: 1rem;
+  }
 }
