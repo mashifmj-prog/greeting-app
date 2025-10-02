@@ -26,7 +26,7 @@ function updateGreeting() {
   }
 
   document.getElementById("icon").innerText = icon;
-  document.getElementById("text").innerText = `${greeting}, Jonas!`;
+  document.getElementById("text").innerText = greeting;;
 }
 
 function updateClock() {
@@ -44,3 +44,4 @@ setInterval(() => {
   updateClock();
   updateGreeting(); // ensures greeting updates automatically at the right hour
 }, 1000);
+
