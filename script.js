@@ -1,10 +1,7 @@
-// Ask the user for their name once
-let userName = prompt("Enter your name:", ""); 
-// If the user leaves it blank, default to empty string
-if (!userName) {
-  userName = "";
-}
+// Store user name
+let userName = "";
 
+// Update greeting function
 function updateGreeting() {
   const now = new Date();
   const hour = now.getHours();
@@ -37,7 +34,6 @@ function updateGreeting() {
     document.body.className = "night";
   }
 
-  // Display greeting + user name if provided
   const displayGreeting = userName ? `${greeting}, ${userName}!` : greeting;
 
   document.getElementById("icon").innerText = icon;
@@ -45,11 +41,19 @@ function updateGreeting() {
   document.getElementById("verse").innerText = verse;
 }
 
+// Update clock function
 function updateClock() {
   const now = new Date();
   const timeString = now.toLocaleTimeString();
   document.getElementById("clock").innerText = timeString;
 }
+
+// Listen to name input changes
+const nameInput = document.getElementById("nameInput");
+nameInput.addEventListener("input", () => {
+  userName = nameInput.value.trim();
+  updateGreeting();
+});
 
 // Initialize
 updateGreeting();
