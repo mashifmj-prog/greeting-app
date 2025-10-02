@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  transition: background 1s ease; /* smooth background changes */
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* space between icon and text */
+}
+
+#icon {
+  font-size: 3.2rem; /* slightly bigger than text */
+}
+
+#clock {
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Backgrounds for different times */
+.morning {
+  background: linear-gradient(to bottom right, #fceabb, #f8b500); /* sunrise */
+}
+
+.day {
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe); /* blue sky */
+}
+
+.afternoon {
+  background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee); /* soft pink-blue */
+}
+
+.evening {
+  background: linear-gradient(to bottom right, #fda085, #f6d365); /* sunset */
+}
+
+.night {
+  background: linear-gradient(to bottom right, #2c3e50, #4ca1af); /* night sky */
+}
