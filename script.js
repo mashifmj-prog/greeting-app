@@ -1,7 +1,13 @@
 // Store user name
 let userName = "";
 
-// Track current background class to avoid unnecessary changes
+// Load name from local storage on page load
+if (localStorage.getItem("userName")) {
+  userName = localStorage.getItem("userName");
+  document.getElementById("nameInput").value = userName;
+}
+
+// Track current background class
 let currentBackground = "";
 
 // Update greeting function
@@ -37,7 +43,7 @@ function updateGreeting() {
     newBackground = "night";
   }
 
-  // Update background only if it has changed
+  // Update background only if it changed
   if (currentBackground !== newBackground) {
     document.body.className = newBackground;
     currentBackground = newBackground;
@@ -61,6 +67,7 @@ function updateClock() {
 const nameInput = document.getElementById("nameInput");
 nameInput.addEventListener("input", () => {
   userName = nameInput.value.trim();
+  localStorage.setItem("userName", userName); // Save name persistently
   updateGreeting();
 });
 
