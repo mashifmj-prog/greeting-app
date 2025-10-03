@@ -121,3 +121,103 @@ const versesNight = [
   "Psalm 4:9 - 'In peace I will both lie down and sleep.'",
   "Psalm 121:7 - 'The Lord will keep you from all harm.'",
   "Psalm 16:8 - 'I keep my eyes always on the Lord
+
+  // -------------------- Helper Functions --------------------
+
+// Pick a random verse from an array
+function getRandomVerse(array) {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}
+
+// Get today's quote based on the date
+function getDailyQuote() {
+  const today = new Date();
+  const index = (today.getDate() - 1) % dailyQuotes.length;
+  return dailyQuotes[index];
+}
+
+// -------------------- Update Greeting and Verse --------------------
+function updateGreeting() {
+  const hour = new Date().getHours();
+  let greeting, icon, verseArray, newBackground;
+
+  if (hour >= 5 && hour < 12) {
+    greeting = "Good Morning";
+    icon = "🌅";
+    verseArray = versesMorning;
+    newBackground = "morning";
+  } else if (hour >= 12 && hour < 14) {
+    greeting = "Good Day";
+    icon = "☀️";
+    verseArray = versesDay;
+    newBackground = "day";
+  } else if (hour >= 14 && hour < 17) {
+    greeting = "Good Afternoon";
+    icon = "🌤️";
+    verseArray = versesAfternoon;
+    newBackground = "afternoon";
+  } else if (hour >= 17 && hour < 20) {
+    greeting = "Good Evening";
+    icon = "🌇";
+    verseArray = versesEvening;
+    newBackground = "evening";
+  } else {
+    greeting = "Good Night";
+    icon = "🌙";
+    verseArray = versesNight;
+    newBackground = "night";
+  }
+
+  // Update greeting text
+  const textEl = document.getElementById("text");
+  textEl.innerText = userName ? `${greeting}, ${userName}!` : greeting;
+
+  // Update icon
+  document.getElementById("icon").innerText = icon;
+
+  // Update verse
+  document.getElementById("verse").innerText =
+    getRandomVerse(verseArray) + "\n\nDaily Quote: " + getDailyQuote();
+
+  // Update background if changed
+  if (currentBackground !== newBackground) {
+    document.body.className = newBackground;
+    currentBackground = newBackground;
+  }
+}
+
+// -------------------- Clock --------------------
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, "0");
+  const m = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  document.getElementById("clock").innerText = `${h}:${m}:${s}`;
+}
+
+// -------------------- Name Input Listener --------------------
+document.getElementById("nameInput").addEventListener("input", (e) => {
+  userName = e.target.value.trim();
+  localStorage.setItem("userName", userName);
+  updateGreeting();
+});
+
+// -------------------- Reset Name --------------------
+document.getElementById("resetButton").addEventListener("click", () => {
+  localStorage.removeItem("userName");
+  userName = "";
+  document.getElementById("nameInput").value = "";
+  updateGreeting();
+});
+
+// -------------------- Initialize --------------------
+updateGreeting();
+updateClock();
+
+// Update clock every second
+setInterval(updateClock, 1000);
+
+// Update greeting & verse every 15 seconds (can adjust)
+setInterval(updateGreeting, 15000);
+
