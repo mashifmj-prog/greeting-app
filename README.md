@@ -1,52 +1,55 @@
-# Greeting App 🌅☀️🌤️🌇🌙
+# 🌞 Dynamic Greeting App
 
-A simple web application that greets the user depending on the time of day, displays a relevant Bible verse, and shows a live clock. The background and icon also change to match morning, day, afternoon, evening, and night.
+A simple, interactive web app that greets the user based on the time of day and displays random Bible verses and daily motivational quotes. Built for beginners to practice JavaScript, HTML, CSS, and GitHub workflows.
+
+![Greeting App Screenshot](./screenshot.png)  
 
 ---
 
 ## Features
 
-- Dynamic greetings for different times of day:
-  - 🌅 Good Morning
-  - ☀️ Good Day
-  - 🌤️ Good Afternoon
-  - 🌇 Good Evening
-  - 🌙 Good Night
-- Live clock that updates every second
-- Background colors change based on the time of day
-- Icons representing the time of day
-- Bible verse displayed under the greeting, matching the time of day
+- Dynamic greeting based on time of day:
+  - Good Morning, Good Day, Good Afternoon, Good Evening, Good Night
+- Random Bible verse per time period
+- Daily motivational quote that changes every day
+- Smooth background transitions for different times of day
+- User name input with persistence (LocalStorage)
+- Reset Name button
+- Live clock
 
 ---
 
-## Bible Verses Used
+## Table of Contents
 
-| Time of Day       | Verse |
-|------------------|-------|
-| Morning 🌅       | Lamentations 3:22-23 |
-| Day ☀️           | Psalm 118:24 |
-| Afternoon 🌤️    | Isaiah 40:31 |
-| Evening 🌇       | Psalm 141:2 |
-| Night 🌙         | Psalm 4:8 |
+1. [Installation](#installation)  
+2. [Usage](#usage)  
+3. [Contributing](#contributing)  
+4. [License](#license)  
 
 ---
 
 ## Installation
 
-No installation is needed. Simply:
-
-1. Clone or download the repository.
-2. Open `index.html` in a web browser.
+No installations required. Simply open `index.html` in your browser.
 
 ---
 
 ## Usage
 
-- Open `index.html` in any browser.
-- The greeting, icon, background, Bible verse, and clock will automatically update based on the current time.
-- Leave the page open, and it will continue updating in real-time.
+1. Enter your name in the input box.
+2. Click "Reset Name" to clear your name.
+3. Enjoy dynamic greetings and daily inspiration.
 
 ---
 
-## Project Structure
+## Contributing
 
+- Fork the repository
+- Make small changes or improvements
+- Commit regularly and push changes
+
+---
+
+## License
+
+This project is open-source and free to use.
