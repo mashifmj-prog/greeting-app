@@ -108,41 +108,4 @@ function updateGreeting() {
 
   const displayGreeting = userName ? `${greeting}, ${userName}!` : greeting;
 
-  document.getElementById("icon").innerText = icon;
-  document.getElementById("text").innerText = displayGreeting;
-  document.getElementById("verse").innerText = `${verse}\n\nDaily Quote: ${getDailyQuote()}`;
-}
-
-// Update clock function
-function updateClock() {
-  const now = new Date();
-  const timeString = now.toLocaleTimeString();
-  document.getElementById("clock").innerText = timeString;
-}
-
-// Listen to name input changes
-const nameInput = document.getElementById("nameInput");
-nameInput.addEventListener("input", () => {
-  userName = nameInput.value.trim();
-  localStorage.setItem("userName", userName); // Persist name
-  updateGreeting();
-});
-
-// Reset name button
-const resetButton = document.getElementById("resetButton");
-resetButton.addEventListener("click", () => {
-  localStorage.removeItem("userName"); // Clear stored name
-  userName = "";
-  nameInput.value = "";
-  updateGreeting(); // Reset greeting to generic
-});
-
-// Initialize
-updateGreeting();
-updateClock();
-
-// Keep updating every second
-setInterval(() => {
-  updateClock();
-  updateGreeting();
-}, 1000);
+  document.getElementById("icon").innerText
