@@ -1,111 +1,80 @@
-// Store user name
-let userName = "";
-
-// Load name from local storage on page load
-if (localStorage.getItem("userName")) {
-  userName = localStorage.getItem("userName");
-  document.getElementById("nameInput").value = userName;
-}
-
-// Track current background class
-let currentBackground = "";
-
-// Bible verses arrays
-const versesMorning = [
-  "Lamentations 3:22-23 - 'The Lord’s mercies are new every morning.'",
-  "Psalm 5:3 - 'In the morning, Lord, you hear my voice.'",
-  "Psalm 59:16 - 'I will sing of your strength in the morning.'"
-];
-
-const versesDay = [
-  "Psalm 118:24 - 'This is the day the Lord has made; rejoice and be glad.'",
-  "Colossians 3:23 - 'Work heartily, as for the Lord.'",
-  "Proverbs 16:3 - 'Commit your work to the Lord, and your plans will succeed.'"
-];
-
-const versesAfternoon = [
-  "Isaiah 40:31 - 'Those who hope in the Lord will renew their strength.'",
-  "Psalm 27:14 - 'Wait for the Lord; be strong, and let your heart take courage.'",
-  "Psalm 143:8 - 'Let the morning bring me word of your unfailing love.'"
-];
-
-const versesEvening = [
-  "Psalm 141:2 - 'May my prayer be set before you like incense.'",
-  "Psalm 119:148 - 'My eyes stay open through the watches of the night.'",
-  "Psalm 4:8 - 'In peace I will lie down and sleep.'"
-];
-
-const versesNight = [
-  "Psalm 4:8 - 'In peace I will lie down and sleep.'",
-  "Psalm 127:2 - 'It is vain for you to rise up early.'",
-  "Proverbs 3:24 - 'When you lie down, you will not be afraid.'"
-];
-
-// Daily motivational quotes
-const dailyQuotes = [
-  "Trust in the Lord with all your heart. – Proverbs 3:5",
-  "Do not be anxious about anything. – Philippians 4:6",
-  "I can do all things through Christ. – Philippians 4:13",
-  "The Lord is my shepherd; I shall not want. – Psalm 23:1",
-  "Be strong and courageous. – Joshua 1:9"
-];
-
-// Helper to get random verse
-function getRandomVerse(array) {
-  const index = Math.floor(Math.random() * array.length);
-  return array[index];
-}
-
-// Helper to get daily quote
-function getDailyQuote() {
-  const today = new Date();
-  const day = today.getDate();
-  const index = day % dailyQuotes.length;
-  return dailyQuotes[index];
-}
-
-// Update greeting function
-function updateGreeting() {
+// -------------------- Clock --------------------
+function updateClock() {
   const now = new Date();
-  const hour = now.getHours();
-  let greeting, icon, verseArray, newBackground;
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2, '0');
+  document.getElementById('clockDisplay').innerText = `${h}:${m}:${s}`;
+}
 
-  if (hour >= 5 && hour < 12) {
-    greeting = "Good Morning";
-    icon = "🌅";
-    verseArray = versesMorning;
-    newBackground = "morning";
-  } else if (hour >= 12 && hour < 15) {
-    greeting = "Good Day";
-    icon = "☀️";
-    verseArray = versesDay;
-    newBackground = "day";
-  } else if (hour >= 15 && hour < 18) {
-    greeting = "Good Afternoon";
-    icon = "🌤️";
-    verseArray = versesAfternoon;
-    newBackground = "afternoon";
-  } else if (hour >= 18 && hour < 22) {
-    greeting = "Good Evening";
-    icon = "🌇";
-    verseArray = versesEvening;
-    newBackground = "evening";
-  } else {
-    greeting = "Good Night";
-    icon = "🌙";
-    verseArray = versesNight;
-    newBackground = "night";
+// Update clock every second
+setInterval(updateClock, 1000);
+updateClock(); // Initial call
+
+// -------------------- Stopwatch --------------------
+let stopwatchInterval;
+let stopwatchTime = 0; // in seconds
+let stopwatchRunning = false;
+
+function updateStopwatchDisplay() {
+  const h = String(Math.floor(stopwatchTime / 3600)).padStart(2, '0');
+  const m = String(Math.floor((stopwatchTime % 3600) / 60)).padStart(2, '0');
+  const s = String(stopwatchTime % 60).padStart(2, '0');
+  document.getElementById('stopwatchDisplay').innerText = `${h}:${m}:${s}`;
+}
+
+document.getElementById('startStopwatch').addEventListener('click', () => {
+  if (!stopwatchRunning) {
+    stopwatchRunning = true;
+    stopwatchInterval = setInterval(() => {
+      stopwatchTime++;
+      updateStopwatchDisplay();
+    }, 1000);
   }
+});
 
-  // Random verse for current time
-  const verse = getRandomVerse(verseArray);
+document.getElementById('stopStopwatch').addEventListener('click', () => {
+  stopwatchRunning = false;
+  clearInterval(stopwatchInterval);
+});
 
-  // Update background only if it changed
-  if (currentBackground !== newBackground) {
-    document.body.className = newBackground;
-    currentBackground = newBackground;
+document.getElementById('resetStopwatch').addEventListener('click', () => {
+  stopwatchRunning = false;
+  clearInterval(stopwatchInterval);
+  stopwatchTime = 0;
+  updateStopwatchDisplay();
+});
+
+// -------------------- Countdown Timer --------------------
+let countdownInterval;
+let countdownTime = 0;
+
+function updateCountdownDisplay() {
+  const m = String(Math.floor(countdownTime / 60)).padStart(2, '0');
+  const s = String(countdownTime % 60).padStart(2, '0');
+  document.getElementById('countdownDisplay').innerText = `${m}:${s}`;
+}
+
+document.getElementById('startCountdown').addEventListener('click', () => {
+  const input = parseInt(document.getElementById('countdownInput').value);
+  if (!isNaN(input) && input > 0) {
+    countdownTime = input;
+    clearInterval(countdownInterval);
+    countdownInterval = setInterval(() => {
+      if (countdownTime > 0) {
+        countdownTime--;
+        updateCountdownDisplay();
+      } else {
+        clearInterval(countdownInterval);
+        alert("Countdown finished!");
+      }
+    }, 1000);
+    updateCountdownDisplay();
   }
+});
 
-  const displayGreeting = userName ? `${greeting}, ${userName}!` : greeting;
-
-  document.getElementById("icon").innerText
+document.getElementById('resetCountdown').addEventListener('click', () => {
+  clearInterval(countdownInterval);
+  countdownTime = 0;
+  updateCountdownDisplay();
+});
