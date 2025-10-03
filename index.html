@@ -3,20 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greeting App</title>
+  <title>Digital Clock App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1 id="greeting">
-      <span id="icon"></span>
-      <span id="text"></span>
-    </h1>
-    <input type="text" id="nameInput" placeholder="Enter your name" />
-    <button id="resetButton">Reset Name</button>
-    <p id="verse"></p>
-    <p id="clock"></p>
+    <h1>Digital Clock</h1>
+
+    <!-- Current Time -->
+    <div id="clockDisplay">00:00:00</div>
+
+    <!-- Stopwatch -->
+    <h2>Stopwatch</h2>
+    <div id="stopwatchDisplay">00:00:00</div>
+    <button id="startStopwatch">Start</button>
+    <button id="stopStopwatch">Stop</button>
+    <button id="resetStopwatch">Reset</button>
+
+    <!-- Countdown Timer -->
+    <h2>Countdown Timer</h2>
+    <input type="number" id="countdownInput" placeholder="Seconds" />
+    <div id="countdownDisplay">00:00</div>
+    <button id="startCountdown">Start Countdown</button>
+    <button id="resetCountdown">Reset Countdown</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
