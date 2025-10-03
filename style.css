@@ -59,6 +59,23 @@ h1 {
   transform: scale(1.05);
 }
 
+#resetButton {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#resetButton:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 1);
+}
+
 #verse {
   font-size: 1.2rem;
   color: white;
