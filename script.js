@@ -10,38 +10,95 @@ if (localStorage.getItem("userName")) {
 // Track current background class
 let currentBackground = "";
 
+// Bible verses arrays
+const versesMorning = [
+  "Lamentations 3:22-23 - 'The Lord’s mercies are new every morning.'",
+  "Psalm 5:3 - 'In the morning, Lord, you hear my voice.'",
+  "Psalm 59:16 - 'I will sing of your strength in the morning.'"
+];
+
+const versesDay = [
+  "Psalm 118:24 - 'This is the day the Lord has made; rejoice and be glad.'",
+  "Colossians 3:23 - 'Work heartily, as for the Lord.'",
+  "Proverbs 16:3 - 'Commit your work to the Lord, and your plans will succeed.'"
+];
+
+const versesAfternoon = [
+  "Isaiah 40:31 - 'Those who hope in the Lord will renew their strength.'",
+  "Psalm 27:14 - 'Wait for the Lord; be strong, and let your heart take courage.'",
+  "Psalm 143:8 - 'Let the morning bring me word of your unfailing love.'"
+];
+
+const versesEvening = [
+  "Psalm 141:2 - 'May my prayer be set before you like incense.'",
+  "Psalm 119:148 - 'My eyes stay open through the watches of the night.'",
+  "Psalm 4:8 - 'In peace I will lie down and sleep.'"
+];
+
+const versesNight = [
+  "Psalm 4:8 - 'In peace I will lie down and sleep.'",
+  "Psalm 127:2 - 'It is vain for you to rise up early.'",
+  "Proverbs 3:24 - 'When you lie down, you will not be afraid.'"
+];
+
+// Daily motivational quotes
+const dailyQuotes = [
+  "Trust in the Lord with all your heart. – Proverbs 3:5",
+  "Do not be anxious about anything. – Philippians 4:6",
+  "I can do all things through Christ. – Philippians 4:13",
+  "The Lord is my shepherd; I shall not want. – Psalm 23:1",
+  "Be strong and courageous. – Joshua 1:9"
+];
+
+// Helper to get random verse
+function getRandomVerse(array) {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}
+
+// Helper to get daily quote
+function getDailyQuote() {
+  const today = new Date();
+  const day = today.getDate();
+  const index = day % dailyQuotes.length;
+  return dailyQuotes[index];
+}
+
 // Update greeting function
 function updateGreeting() {
   const now = new Date();
   const hour = now.getHours();
-  let greeting, icon, verse, newBackground;
+  let greeting, icon, verseArray, newBackground;
 
   if (hour >= 5 && hour < 12) {
     greeting = "Good Morning";
     icon = "🌅";
-    verse = "Lamentations 3:22-23 - 'Because of the Lord’s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.'";
+    verseArray = versesMorning;
     newBackground = "morning";
   } else if (hour >= 12 && hour < 15) {
     greeting = "Good Day";
     icon = "☀️";
-    verse = "Psalm 118:24 - 'This is the day the Lord has made; we will rejoice and be glad in it.'";
+    verseArray = versesDay;
     newBackground = "day";
   } else if (hour >= 15 && hour < 18) {
     greeting = "Good Afternoon";
     icon = "🌤️";
-    verse = "Isaiah 40:31 - 'But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.'";
+    verseArray = versesAfternoon;
     newBackground = "afternoon";
   } else if (hour >= 18 && hour < 22) {
     greeting = "Good Evening";
     icon = "🌇";
-    verse = "Psalm 141:2 - 'May my prayer be set before you like incense; may the lifting up of my hands be like the evening sacrifice.'";
+    verseArray = versesEvening;
     newBackground = "evening";
   } else {
     greeting = "Good Night";
     icon = "🌙";
-    verse = "Psalm 4:8 - 'In peace I will lie down and sleep, for you alone, Lord, make me dwell in safety.'";
+    verseArray = versesNight;
     newBackground = "night";
   }
+
+  // Random verse for current time
+  const verse = getRandomVerse(verseArray);
 
   // Update background only if it changed
   if (currentBackground !== newBackground) {
@@ -53,7 +110,7 @@ function updateGreeting() {
 
   document.getElementById("icon").innerText = icon;
   document.getElementById("text").innerText = displayGreeting;
-  document.getElementById("verse").innerText = verse;
+  document.getElementById("verse").innerText = `${verse}\n\nDaily Quote: ${getDailyQuote()}`;
 }
 
 // Update clock function
@@ -67,7 +124,7 @@ function updateClock() {
 const nameInput = document.getElementById("nameInput");
 nameInput.addEventListener("input", () => {
   userName = nameInput.value.trim();
-  localStorage.setItem("userName", userName); // Save name persistently
+  localStorage.setItem("userName", userName); // Persist name
   updateGreeting();
 });
 
