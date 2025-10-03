@@ -128,6 +128,15 @@ nameInput.addEventListener("input", () => {
   updateGreeting();
 });
 
+// Reset name button
+const resetButton = document.getElementById("resetButton");
+resetButton.addEventListener("click", () => {
+  localStorage.removeItem("userName"); // Clear stored name
+  userName = "";
+  nameInput.value = "";
+  updateGreeting(); // Reset greeting to generic
+});
+
 // Initialize
 updateGreeting();
 updateClock();
