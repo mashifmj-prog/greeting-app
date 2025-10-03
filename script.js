@@ -120,29 +120,4 @@ const versesNight = [
   "Psalm 63:1 - 'O God, you are my God; earnestly I seek you.'",
   "Psalm 4:9 - 'In peace I will both lie down and sleep.'",
   "Psalm 121:7 - 'The Lord will keep you from all harm.'",
-  "Psalm 16:8 - 'I keep my eyes always on the Lord.'",
-  "Psalm 145:18 - 'The Lord is near to all who call on Him.'",
-  "Psalm 119:148 - 'My eyes are awake before the watches of the night.'",
-  "Psalm 31:20 - 'You keep them in perfect peace whose minds are stayed on you.'"
-];
-
-// 31 daily quotes
-const dailyQuotes = [
-  "Trust in the Lord with all your heart. – Proverbs 3:5",
-  "Do not be anxious about anything. – Philippians 4:6",
-  "I can do all things through Christ. – Philippians 4:13",
-  "The Lord is my shepherd; I shall not want. – Psalm 23:1",
-  "Be strong and courageous. – Joshua 1:9",
-  "Commit your work to the Lord, and your plans will succeed. – Proverbs 16:3",
-  "The Lord is my light and my salvation—whom shall I fear? – Psalm 27:1",
-  "For I know the plans I have for you… – Jeremiah 29:11",
-  "Cast all your anxiety on Him because He cares for you. – 1 Peter 5:7",
-  "The steadfast love of the Lord never ceases. – Lamentations 3:22",
-  "Delight yourself in the Lord, and He will give you the desires of your heart. – Psalm 37:4",
-  "Be still, and know that I am God. – Psalm 46:10",
-  "The Lord is near to all who call on Him. – Psalm 145:18",
-  "God is our refuge and strength, an ever-present help in trouble. – Psalm 46:1",
-  "Let all that you do be done in love. – 1 Corinthians 16:14",
-  "The joy of the Lord is your strength. – Nehemiah 8:10",
-  "Rejoice always, pray without ceasing. – 1 Thessalonians 5:16-17",
-  "He gives power to the faint, and to him who has no might He
+  "Psalm 16:8 - 'I keep my eyes always on the Lord
