@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
-  transition: background 2s ease; /* Background now transitions smoothly over 2 seconds */
+  transition: background 2s ease; /* Smooth background fade */
 }
 
 .container {
@@ -69,6 +69,7 @@ h1 {
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
+  white-space: pre-line; /* Preserve line breaks for verse + daily quote */
 }
 
 #clock {
