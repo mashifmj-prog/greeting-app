@@ -34,10 +34,14 @@ h1 {
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
-#icon { font-size: 3.2rem; }
+#icon {
+  font-size: 3.2rem;
+}
 
 #nameInput {
   margin-top: 12px;
@@ -51,7 +55,9 @@ h1 {
   transition: transform 0.2s ease;
 }
 
-#nameInput:focus { transform: scale(1.05); }
+#nameInput:focus {
+  transform: scale(1.05);
+}
 
 #resetButton {
   margin-top: 10px;
@@ -90,14 +96,34 @@ h1 {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-.morning { background: linear-gradient(to bottom right, #fceabb, #f8b500); }
-.day { background: linear-gradient(to bottom right, #4facfe, #00f2fe); }
-.afternoon { background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee); }
-.evening { background: linear-gradient(to bottom right, #fda085, #f6d365); }
-.night { background: linear-gradient(to bottom right, #2c3e50, #4ca1af); }
+.morning {
+  background: linear-gradient(to bottom right, #fceabb, #f8b500);
+}
+
+.day {
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+}
+
+.afternoon {
+  background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee);
+}
+
+.evening {
+  background: linear-gradient(to bottom right, #fda085, #f6d365);
+}
+
+.night {
+  background: linear-gradient(to bottom right, #2c3e50, #4ca1af);
+}
 
 @media (max-width: 500px) {
-  h1 { font-size: 2rem; }
-  #icon { font-size: 2.2rem; }
-  #verse { font-size: 1rem; }
+  h1 {
+    font-size: 2rem;
+  }
+  #icon {
+    font-size: 2.2rem;
+  }
+  #verse {
+    font-size: 1rem;
+  }
 }
