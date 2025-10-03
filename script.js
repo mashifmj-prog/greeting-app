@@ -1,3 +1,5 @@
+// -------------------- Greeting App --------------------
+
 // Store user name
 let userName = "";
 if (localStorage.getItem("userName")) {
@@ -143,58 +145,4 @@ const dailyQuotes = [
   "Let all that you do be done in love. – 1 Corinthians 16:14",
   "The joy of the Lord is your strength. – Nehemiah 8:10",
   "Rejoice always, pray without ceasing. – 1 Thessalonians 5:16-17",
-  "He gives power to the faint, and to him who has no might He increases strength. – Isaiah 40:29",
-  "Cast your burden on the Lord, and He will sustain you. – Psalm 55:22",
-  "Let your light shine before others. – Matthew 5:16",
-  "I will instruct you and teach you in the way you should go. – Psalm 32:8",
-  "The Lord is good to all. – Psalm 145:9",
-  "Your word is a lamp to my feet and a light to my path. – Psalm 119:105",
-  "Fear not, for I am with you. – Isaiah 41:10",
-  "In everything give thanks. – 1 Thessalonians 5:18",
-  "Do not be overcome by evil, but overcome evil with good. – Romans 12:21",
-  "Love your neighbor as yourself. – Matthew 22:39",
-  "The Lord is righteous in all His ways. – Psalm 145:17",
-  "Wait for the Lord; be strong, and let your heart take courage. – Psalm 27:14",
-  "Peace I leave with you; my peace I give to you. – John 14:27",
-  "God is faithful; He will not let you be tested beyond your strength. – 1 Corinthians 10:13"
-];
-
-// Helper functions
-function getRandomVerse(array) {
-  const index = Math.floor(Math.random() * array.length);
-  return array[index];
-}
-function getDailyQuote() {
-  const today = new Date();
-  const index = (today.getDate() - 1) % dailyQuotes.length;
-  return dailyQuotes[index];
-}
-
-// Update greeting, verse, background
-function updateGreeting() {
-  const hour = new Date().getHours();
-  let greeting, icon, verseArray, newBackground;
-
-  if (hour >= 5 && hour < 12) {
-    greeting = "Good Morning";
-    icon = "🌅";
-    verseArray = versesMorning;
-    newBackground = "morning";
-  } else if (hour >= 12 && hour < 14) {
-    greeting = "Good Day";
-    icon = "☀️";
-    verseArray = versesDay;
-    newBackground = "day";
-  } else if (hour >= 14 && hour < 17) {
-    greeting = "Good Afternoon";
-    icon = "🌤️";
-    verseArray = versesAfternoon;
-    newBackground = "afternoon";
-  } else if (hour >= 17 && hour < 20) {
-    greeting = "Good Evening";
-    icon = "🌇";
-    verseArray = versesEvening;
-    newBackground = "evening";
-  } else {
-    greeting = "Good Night";
-    icon
+  "He gives power to the faint, and to him who has no might He
