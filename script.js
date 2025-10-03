@@ -132,3 +132,4 @@ updateGreeting();
 updateClock();
 setInterval(updateClock, 1000);
 setInterval(updateGreeting, 60000); // Verse updates every 60 seconds
+
