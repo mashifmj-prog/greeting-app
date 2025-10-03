@@ -2,18 +2,15 @@
 
 // Store user name
 let userName = "";
-
-// Load name from local storage
 if (localStorage.getItem("userName")) {
   userName = localStorage.getItem("userName");
   document.getElementById("nameInput").value = userName;
 }
 
-// Track current background class
+// Track background
 let currentBackground = "";
 
-// -------------------- Bible verses --------------------
-// 20 verses for Morning
+// 20 verses per time period
 const versesMorning = [
   "Psalm 5:3 - 'In the morning, Lord, you hear my voice.'",
   "Lamentations 3:22-23 - 'The Lord’s mercies are new every morning.'",
@@ -37,10 +34,9 @@ const versesMorning = [
   "Psalm 63:6 - 'When I remember you on my bed, I meditate on you.'"
 ];
 
-// 20 verses for Day
 const versesDay = [
   "Psalm 118:24 - 'This is the day the Lord has made; rejoice and be glad.'",
-  "Colossians 3:23 - 'Work heartily, as for the Lord.'",
+  "Colossians 3:23 - 'Whatever you do, work heartily.'",
   "Proverbs 16:3 - 'Commit your work to the Lord.'",
   "Ecclesiastes 9:10 - 'Whatever your hand finds to do, do it with all your might.'",
   "Psalm 37:5 - 'Commit your way to the Lord.'",
@@ -61,7 +57,6 @@ const versesDay = [
   "Psalm 27:14 - 'Wait for the Lord; be strong.'"
 ];
 
-// 20 verses for Afternoon
 const versesAfternoon = [
   "Isaiah 40:31 - 'Those who hope in the Lord will renew their strength.'",
   "Psalm 27:14 - 'Wait for the Lord; be strong.'",
@@ -85,12 +80,11 @@ const versesAfternoon = [
   "Psalm 46:1 - 'God is our refuge and strength.'"
 ];
 
-// 20 verses for Evening
 const versesEvening = [
   "Psalm 141:2 - 'May my prayer be set before you like incense.'",
   "Psalm 119:148 - 'My eyes stay open through the watches of the night.'",
   "Psalm 4:8 - 'In peace I will lie down and sleep.'",
-  "Psalm 63:6 - 'On my bed I remember you.'",
+  "Psalm 63:1 - 'On my bed I remember you.'",
   "Psalm 16:7 - 'I will praise the Lord, who counsels me.'",
   "Psalm 34:4 - 'I sought the Lord, and He answered me.'",
   "Psalm 121:3 - 'He will not let your foot slip.'",
@@ -109,121 +103,8 @@ const versesEvening = [
   "Psalm 34:8 - 'Taste and see that the Lord is good.'"
 ];
 
-// 20 verses for Night
 const versesNight = [
   "Psalm 4:8 - 'In peace I will lie down and sleep.'",
   "Psalm 127:2 - 'It is vain for you to rise up early.'",
   "Proverbs 3:24 - 'When you lie down, you will not be afraid.'",
-  "Psalm 91:1 - 'He who dwells in the shelter of the Most High.'",
-  "Psalm 63:6 - 'On my bed I remember you.'",
-  "Psalm 16:7 - 'I will praise the Lord, who counsels me.'",
-  "Psalm 34:4 - 'I sought the Lord, and He answered me.'",
-  "Psalm 121:3 - 'He will not let your foot slip.'",
-  "Psalm 91:2 - 'I will say of the Lord, He is my refuge.'",
-  "Psalm 27:1 - 'The Lord is my light and my salvation.'",
-  "Psalm 37:7 - 'Be still before the Lord.'",
-  "Psalm 119:57 - 'The Lord is my portion.'",
-  "Psalm 91:5 - 'You will not fear the terror of night.'",
-  "Psalm 63:1 - 'O God, you are my God; earnestly I seek you.'",
-  "Psalm 4:9 - 'In peace I will both lie down and sleep.'",
-  "Psalm 121:7 - 'The Lord will keep you from all harm.'",
-  "Psalm 16:8 - 'I keep my eyes always on the Lord.'",
-  "Psalm 145:18 - 'The Lord is near to all who call on Him.'",
-  "Psalm 119:148 - 'My eyes are awake before the watches of the night.'",
-  "Psalm 31:20 - 'You keep them in perfect peace whose minds are stayed on you.'"
-];
-
-// Daily motivational quotes (unchanged)
-const dailyQuotes = [
-  "Trust in the Lord with all your heart. – Proverbs 3:5",
-  "Do not be anxious about anything. – Philippians 4:6",
-  "I can do all things through Christ. – Philippians 4:13",
-  "The Lord is my shepherd; I shall not want. – Psalm 23:1",
-  "Be strong and courageous. – Joshua 1:9"
-];
-
-// -------------------- Helper functions --------------------
-function getRandomVerse(array) {
-  const index = Math.floor(Math.random() * array.length);
-  return array[index];
-}
-
-function getDailyQuote() {
-  const today = new Date();
-  const index = today.getDate() % dailyQuotes.length;
-  return dailyQuotes[index];
-}
-
-// -------------------- Update greeting --------------------
-function updateGreeting() {
-  const hour = new Date().getHours();
-  let greeting, icon, verseArray, newBackground;
-
-  if (hour >= 5 && hour < 12) {
-    greeting = "Good Morning";
-    icon = "🌅";
-    verseArray = versesMorning;
-    newBackground = "morning";
-  } else if (hour >= 12 && hour < 15) {
-    greeting = "Good Day";
-    icon = "☀️";
-    verseArray = versesDay;
-    newBackground = "day";
-  } else if (hour >= 15 && hour < 18) {
-    greeting = "Good Afternoon";
-    icon = "🌤️";
-    verseArray = versesAfternoon;
-    newBackground = "afternoon";
-  } else if (hour >= 18 && hour < 22) {
-    greeting = "Good Evening";
-    icon = "🌇";
-    verseArray = versesEvening;
-    newBackground = "evening";
-  } else {
-    greeting = "Good Night";
-    icon = "🌙";
-    verseArray = versesNight;
-    newBackground = "night";
-  }
-
-  if (currentBackground !== newBackground) {
-    document.body.className = newBackground;
-    currentBackground = newBackground;
-  }
-
-  const displayGreeting = userName ? `${greeting}, ${userName}!` : greeting;
-
-  document.getElementById("icon").innerText = icon;
-  document.getElementById("text").innerText = displayGreeting;
-  document.getElementById("verse").innerText = `${getRandomVerse(verseArray)}\n\nDaily Quote: ${getDailyQuote()}`;
-}
-
-// -------------------- Clock --------------------
-function updateClock() {
-  const now = new Date();
-  const h = String(now.getHours()).padStart(2,'0');
-  const m = String(now.getMinutes()).padStart(2,'0');
-  const s = String(now.getSeconds()).padStart(2,'0');
-  document.getElementById("clock").innerText = `${h}:${m}:${s}`;
-}
-
-// -------------------- Name input listener --------------------
-document.getElementById("nameInput").addEventListener("input", e => {
-  userName = e.target.value.trim();
-  localStorage.setItem("userName", userName);
-  updateGreeting();
-});
-
-// -------------------- Reset Name button --------------------
-document.getElementById("resetButton").addEventListener("click", () => {
-  localStorage.removeItem("userName");
-  userName = "";
-  document.getElementById("nameInput").value = "";
-  updateGreeting();
-});
-
-// -------------------- Initialize --------------------
-updateGreeting();
-updateClock();
-setInterval(updateClock, 1000);
-setInterval(updateGreeting, 60000); // Verse updates every 60 seconds
+  "Psalm 91:1 - 'He who dwells in the shelter of the Most High.'
