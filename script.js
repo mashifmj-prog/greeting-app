@@ -120,24 +120,60 @@ const versesNight = [
   "Psalm 63:1 - 'O God, you are my God; earnestly I seek you.'",
   "Psalm 4:9 - 'In peace I will both lie down and sleep.'",
   "Psalm 121:7 - 'The Lord will keep you from all harm.'",
-  "Psalm 16:8 - 'I keep my eyes always on the Lord
+  "Psalm 16:8 - 'I keep my eyes always on the Lord.'",
+  "Psalm 145:18 - 'The Lord is near to all who call on Him.'",
+  "Psalm 119:148 - 'My eyes are awake before the watches of the night.'",
+  "Psalm 31:20 - 'You keep them in perfect peace whose minds are stayed on you.'"
+];
 
-  // -------------------- Helper Functions --------------------
+// Daily Quotes for each day of the month (1–31)
+const dailyQuotes = [
+  "Trust in the Lord with all your heart.",
+  "Be strong and courageous.",
+  "The Lord is my shepherd; I shall not want.",
+  "I can do all things through Christ who strengthens me.",
+  "Rejoice in the Lord always.",
+  "Commit your work to the Lord, and your plans will succeed.",
+  "The Lord is near to the brokenhearted.",
+  "Cast all your anxiety on Him because He cares for you.",
+  "Be still and know that I am God.",
+  "The Lord will fight for you; you need only to be still.",
+  "Delight yourself in the Lord, and He will give you the desires of your heart.",
+  "Do not be anxious about anything.",
+  "Blessed is the one who trusts in the Lord.",
+  "The Lord is my light and my salvation.",
+  "Taste and see that the Lord is good.",
+  "Let your light shine before others.",
+  "Be patient in tribulation.",
+  "Love one another as I have loved you.",
+  "The steadfast love of the Lord never ceases.",
+  "God is our refuge and strength, a very present help in trouble.",
+  "Seek first the kingdom of God and His righteousness.",
+  "Do not fear, for I am with you.",
+  "Your word is a lamp to my feet and a light to my path.",
+  "The joy of the Lord is your strength.",
+  "The Lord bless you and keep you.",
+  "He will cover you with His feathers, and under His wings you will find refuge.",
+  "Pray without ceasing.",
+  "Whatever you do, work heartily, as for the Lord.",
+  "The Lord is faithful; He will strengthen you.",
+  "Give thanks in all circumstances.",
+  "Trust in the Lord forever."
+];
 
-// Pick a random verse from an array
+// -------------------- Helper Functions --------------------
 function getRandomVerse(array) {
   const index = Math.floor(Math.random() * array.length);
   return array[index];
 }
 
-// Get today's quote based on the date
 function getDailyQuote() {
   const today = new Date();
   const index = (today.getDate() - 1) % dailyQuotes.length;
   return dailyQuotes[index];
 }
 
-// -------------------- Update Greeting and Verse --------------------
+// -------------------- Update Greeting --------------------
 function updateGreeting() {
   const hour = new Date().getHours();
   let greeting, icon, verseArray, newBackground;
@@ -176,7 +212,7 @@ function updateGreeting() {
   // Update icon
   document.getElementById("icon").innerText = icon;
 
-  // Update verse
+  // Update verse + daily quote
   document.getElementById("verse").innerText =
     getRandomVerse(verseArray) + "\n\nDaily Quote: " + getDailyQuote();
 
@@ -190,34 +226,4 @@ function updateGreeting() {
 // -------------------- Clock --------------------
 function updateClock() {
   const now = new Date();
-  const h = String(now.getHours()).padStart(2, "0");
-  const m = String(now.getMinutes()).padStart(2, "0");
-  const s = String(now.getSeconds()).padStart(2, "0");
-  document.getElementById("clock").innerText = `${h}:${m}:${s}`;
-}
-
-// -------------------- Name Input Listener --------------------
-document.getElementById("nameInput").addEventListener("input", (e) => {
-  userName = e.target.value.trim();
-  localStorage.setItem("userName", userName);
-  updateGreeting();
-});
-
-// -------------------- Reset Name --------------------
-document.getElementById("resetButton").addEventListener("click", () => {
-  localStorage.removeItem("userName");
-  userName = "";
-  document.getElementById("nameInput").value = "";
-  updateGreeting();
-});
-
-// -------------------- Initialize --------------------
-updateGreeting();
-updateClock();
-
-// Update clock every second
-setInterval(updateClock, 1000);
-
-// Update greeting & verse every 15 seconds (can adjust)
-setInterval(updateGreeting, 15000);
-
+  const
